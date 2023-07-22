@@ -12,6 +12,10 @@ const user_schema=mongoose.Schema({
     email_verified:{
         required:true,
         type:Boolean
+    },
+    login_id:{
+        required:true,
+        type:String
     }
 })
 

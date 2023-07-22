@@ -69,7 +69,7 @@ app.get('/auth/google/callback',
 // Gives success message 
 app.get('/auth/google/success',isLoogedIn,(req,res)=>
 {
-    console.log(req.user);
+    
    
     res.render('user_dashboard',{user:req.user});
 });
