@@ -9,6 +9,7 @@ require('dotenv').config();
 
 const app=express();
 const bodyParser=require('body-parser');
+const conn = require('../database/connection');
  
 const PORT= process.env.PORT;
 
@@ -71,16 +72,17 @@ app.get('/auth/google/success',isLoogedIn,(req,res)=>
     console.log(req.user);
    
     res.render('user_dashboard',{user:req.user});
-})
+});
 
 // Gives error message 
 app.get("/auth/google/failure",(req,res)=>
 {
     res.send("Error 404, Unable to login with your valid google account");
-})
+});
 
 // Listening server 
 app.listen(PORT,()=>
 {
     console.log(`Your server is listening on ${PORT} port`);
+    conn();
 })
