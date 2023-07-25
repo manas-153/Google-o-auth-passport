@@ -4,8 +4,6 @@ const passport=require('passport');
 const session = require('express-session');
 const cors=require('cors');
 const cookieParser=require('cookie-parser');
-const https=require('https');
-const fs=require('fs');
 
 require('../auth/auth');
 require('dotenv').config();
@@ -60,10 +58,8 @@ app.get("/",(req,res)=>
 })
 
 
-app.get('/auth/google', (req,res)=>
-{
-    res.json("hello");
-});
+app.get('/auth/google',passport.authenticate('google', { scope:[ 'email', 'profile' ] }));
+
 
 app.get('/logout',(req,res)=>
 {
@@ -72,7 +68,7 @@ app.get('/logout',(req,res)=>
         req.logout((err)=>
         {
             // console.log(err);
-            // res.redirect('https://accounts.google.com/logout');
+            res.redirect('https://accounts.google.com/logout');
         });
     });
 })
@@ -96,6 +92,8 @@ app.get("/auth/google/failure",(req,res)=>
 {
     res.send("Error 404, Unable to login with your valid google account");
 });
+
+
 
 // Listening server 
 app.listen(PORT,()=>

@@ -4,16 +4,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  
+    <style>
+        img
+        {
+            border-radius: 50%;
+            width: 40px;
+        }
+
+        .user-dropdown
+        {
+              
+           
+        }
+    </style>
 </head>
 <body>
-    <h1>welcome <%= user.displayName %></h1>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ 
+    <!-- navbar  -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-    your Image :
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <img src=<%= user.profileImage %> alt="">  </h1>
+            <ul class="navbar-nav me-auto  mb-lg-0 d-flex align-items-center justify-content-center w-100">
 
-      <button><a href="http://localhost:4000/logout">Logout</a></button>
-      <!-- <iframe id="logoutframe" src="https://accounts.google.com/logout"></iframe> -->
+              <li class="nav-item me-md-4 ">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+
+              <li class="nav-item me-md-4">
+                <a class="nav-link" href="#">About</a>
+              </li>
+
+              <li class="nav-item me-md-4">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+
+              <li class="nav-item me-md-4">
+                <a class="nav-link" href="#">Services</a>
+              </li>
+
+
+
+              <li class="nav-item me-md-4">
+              
+
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 300px;">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+
+              </li>
+
+
     
+
+
+            </ul>
+
+
+            <div class="user-avatar">
+
+              <div class="dropdown ms-3">
+                <button class="btn bg-none dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="<%= user.profileImage %>" alt="">
+                </button>
+
+          
+                <div class="user-dropdown dropdown-menu me-md-3 w-50" aria-labelledby="dropdownMenuButton1">
+                  
+                  <h2>hi <%= user.displayName %> </h2>
+                   
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </nav>
+
+
+
+      <div class="container">
+
+   
+
+      <div class="row mt-5">
+        <!-- card 1 -->
+        <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary" >
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+
+        <!-- card 2 -->
+        <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+
+        <!-- card 3 -->
+        <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary mb-3" >
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+
+        <!-- card- 4  -->
+        <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary mb-3" >
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+
+        <!-- card 5 -->
+
+        <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+
+        <!-- card -6  -->
+
+        <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+
+         <!-- card -7  -->
+
+         <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+
+
+         <!-- card -8  -->
+
+         <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+        
+         <!-- card -9  -->
+
+         <div class="col-md-4 mb-4 mt-3 mb-4">
+
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Header</div>
+                <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+    
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
