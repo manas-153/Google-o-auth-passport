@@ -1,8 +1,12 @@
 const passport =require('passport');
-const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+const GoogleStrategy = require( 'passport-google-oauth' ).OAuth2Strategy;
+const user_schema = require('../database/schema');
+const cors=require('cors');
 
 // AIzaSyB3aWlVqEVSIsc-KwuSZyIZ9-xoDE5RlWU
 require('dotenv').config();
+
+passport.use(cors());
 
 
 passport.use(new GoogleStrategy({
@@ -13,10 +17,27 @@ passport.use(new GoogleStrategy({
   },
 
   function(request, accessToken, refreshToken, profile, done) {
-    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-    //   return done(err, user);
-    // });
-    return done(null,profile);
+    user_schema.findOne({ googleId: profile.id }).then((existingUser)=>
+    {
+          if(existingUser)
+          {
+            done(null, existingUser);
+          }
+          else{
+            new user_schema({
+              googleId: profile.id,
+              displayName: profile.displayName,
+              email: profile.emails[0].value,
+              profileImage:profile._json.picture,
+              accessToken:accessToken,
+              refreshToken:refreshToken
+            })
+              .save()
+              .then((user) => done(null, user));
+
+          }
+    })
+
   }
 ));
 

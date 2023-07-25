@@ -1,22 +1,44 @@
 const mongoose = require('mongoose');
 
 const user_schema=mongoose.Schema({
-    Name:{
-        required:true,
-        type:String
-    },
-    Image:{
-        required:true,
-        type:String
-    },
-    email_verified:{
-        required:true,
-        type:Boolean
-    },
-    login_id:{
-        required:true,
-        type:String
-    }
-})
+     googleId:{
+          required:true,
+          type:String
+     },
+     profileImage:{
+          required:false,
+          type:String
+     },
+
+     displayName:{
+          required:true,
+          type:String
+     },
+     email: 
+     {
+          required:true,
+          type:String
+     },
+     cartProducts:{
+          required:false,
+          type:Array,
+     },
+     favourites:{
+             required:false,
+             type:Array,    
+     },
+     orders:{
+          required:false,
+          type:Array
+     },
+     accessToken:{
+          required:true,
+          type:String
+     },
+     refreshToken:{
+          required:false,
+          type:String
+     }
+});
 
 module.exports=mongoose.model('users',user_schema);

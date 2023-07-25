@@ -3,6 +3,9 @@ const path=require('path');
 const passport=require('passport');
 const session = require('express-session');
 const cors=require('cors');
+const cookieParser=require('cookie-parser');
+const https=require('https');
+const fs=require('fs');
 
 require('../auth/auth');
 require('dotenv').config();
@@ -12,8 +15,6 @@ const bodyParser=require('body-parser');
 const conn = require('../database/connection');
  
 const PORT= process.env.PORT;
-
-
 
 
 
@@ -29,7 +30,11 @@ function isLoogedIn(req,res,next)
         msg:"Please Login with your valid account to access this page",
     })
 }
+
+app.use(cookieParser());
+
 app.use(bodyParser.json());
+
 app.use(cors());
 
 app.use(passport.initialize());
@@ -50,13 +55,28 @@ app.use(passport.session());
 app.get("/",(req,res)=>
 {
     // console.log();
-    res.send("Hello from node js")
+    console.log(res.cookie("connect.sid"));
+    res.render('login');
 })
 
-app.get('/auth/google',
-  passport.authenticate('google', { scope:[ 'email', 'profile' ] }
-));
 
+app.get('/auth/google', (req,res)=>
+{
+    res.json("hello");
+});
+
+app.get('/logout',(req,res)=>
+{
+
+    req.session.destroy((e)=>{
+        req.logout((err)=>
+        {
+            // console.log(err);
+            // res.redirect('https://accounts.google.com/logout');
+        });
+    });
+})
+   
 
 app.get('/auth/google/callback',
     passport.authenticate( 'google', {
@@ -64,13 +84,10 @@ app.get('/auth/google/callback',
         failureRedirect: '/auth/google/failure'
 }));
 
-
-
 // Gives success message 
 app.get('/auth/google/success',isLoogedIn,(req,res)=>
 {
-    
-   
+    // console.log(req.user);
     res.render('user_dashboard',{user:req.user});
 });
 
@@ -86,3 +103,4 @@ app.listen(PORT,()=>
     console.log(`Your server is listening on ${PORT} port`);
     conn();
 })
+
